@@ -3,7 +3,7 @@
 <head>
 <title>Ali KELEŞOĞLU</title>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
 <meta name="theme-color" content="#eef2f1" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0d1514" media="(prefers-color-scheme: dark)">
 <meta name="mobile-web-app-capable" content="yes">
@@ -250,6 +250,13 @@ button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 2px
 .chips button[aria-pressed="true"] { border-color: var(--accent); background: var(--accent); color: var(--accent-fg); }
 .err { color: var(--out); font-size: 13px; min-height: 1em; margin: -8px 0 0; }
 .actions { display: flex; gap: 10px; }
+/* Kaydet butonu klavye açıkken de formun altında görünür kalsın */
+.sheet > .actions {
+  position: sticky; bottom: calc(-20px - env(safe-area-inset-bottom, 0px)); z-index: 2;
+  margin: 0 -18px calc(-20px - env(safe-area-inset-bottom, 0px));
+  padding: 12px 18px calc(16px + env(safe-area-inset-bottom, 0px));
+  background: var(--surface); border-top: 1px solid var(--line);
+}
 .btn { flex: 1; border: 0; border-radius: 14px; padding: 14px; font-weight: 700; font-size: 15px; background: var(--surface-2); color: var(--fg); }
 .btn.primary { background: var(--accent); color: var(--accent-fg); }
 .btn.danger { background: var(--out-soft); color: var(--out); }
@@ -324,7 +331,7 @@ textarea { min-height: 90px; font-size: 12px; font-family: ui-monospace, Menlo, 
     <button type="button" id="typeOut">Gider</button>
     <button type="button" id="typeIn">Gelir</button>
   </div>
-  <div class="amount-wrap"><span>₺</span><input id="amount" inputmode="decimal" autocomplete="off" placeholder="0" aria-label="Tutar"></div>
+  <div class="amount-wrap"><span>₺</span><input id="amount" inputmode="decimal" enterkeyhint="done" autocomplete="off" placeholder="0" aria-label="Tutar"></div>
   <p class="err" id="err"></p>
   <div class="field">
     <span class="field-label">Kategori</span>
